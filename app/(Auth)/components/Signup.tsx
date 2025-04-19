@@ -6,6 +6,7 @@ import useFormHandlers from '@/app/hook/useFormHandler';
 import revalidate from '@/app/utils/revalidate';
 import tryCatchPost from '@/app/utils/tryCatch';
 import LoadingBtn from '@/app/components/LoadingBtn';
+import Ken from '@/app/ken';
 
 const signupSchema = object({
   fullName: string()
@@ -31,7 +32,7 @@ export default function Signup() {
   const { register, handleSubmit, formState } = useFormHandlers(signupSchema);
   async function renderOnSubmit(data: InferType<typeof signupSchema>) {
     const [response, err] = await tryCatchPost('users/signup', 'post', data);
-
+    await Ken();
     if (!response) {
       toast.error(err, { position: 'top-right', id: 'signup' });
       return;
