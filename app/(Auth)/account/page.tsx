@@ -1,6 +1,7 @@
 import InitAccount from '../components/InitAccount';
 import { redirect } from 'next/navigation';
 import getLoggedUser from '@/app/utils/getLoggedUser';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Login or Sign Up – Tech-Freak',
