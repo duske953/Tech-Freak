@@ -15,7 +15,6 @@ export default function Search() {
     throw new Error('SearchContext must be used within a SearchProvider');
   }
   const { openSearch, setOpenSearch } = context;
-
   return (
     <>
       <li>
@@ -41,6 +40,7 @@ export function SearchOverlay() {
   if (!context) {
     throw new Error('SearchContext must be used within a SearchProvider');
   }
+
   const { openSearch, setOpenSearch, searchValue, setSearchValue } = context;
   return (
     <form onSubmit={renderSearchProducts}>
