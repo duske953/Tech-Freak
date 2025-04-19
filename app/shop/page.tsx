@@ -3,10 +3,9 @@ import ProductCategories from './components/ProductCategories';
 import Image from 'next/image';
 import ProductsList from '../components/ProductsList';
 import Pagination from '../components/Pagination';
-import { buttonVariants } from '../components/ui/button';
-import Link from 'next/link';
 import { Metadata } from 'next';
 import { pageProps } from '../utils/interfaces';
+import ErrorPage from '../components/ErrorPage';
 
 export const metadata: Metadata = {
   title: 'Shop – Tech-Freak',
@@ -39,31 +38,7 @@ export default async function Page({ searchParams }: pageProps) {
     300
   );
 
-  if (err) {
-    return (
-      <div className="flex justify-center flex-col items-center py-8">
-        <Image
-          src="/not-found.svg"
-          alt="we could not find the requested resource"
-          height={500}
-          width={500}
-        />
-        <p className="relative text-2xl font-bold">
-          Oops! Looks like this page packed its bags and left. Maybe try another
-          route?
-        </p>
-        <Link
-          href="/"
-          className={`${buttonVariants({
-            size: 'lg',
-            variant: 'secondary',
-          })} mt-4`}
-        >
-          Home
-        </Link>
-      </div>
-    );
-  }
+  if (err) return <ErrorPage />;
   return (
     <section>
       <div className="relative px-8 py-11 flex items-center my-8 gap-4 bg-gray-50 max-lg:flex-col max-lg:gap-8">
