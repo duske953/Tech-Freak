@@ -40,7 +40,7 @@ export default function Cart({
   return (
     <Sheet open={modalOpen} onOpenChange={setModalOpen}>
       <SheetTrigger>
-        <div className="relative top-2">
+        <div className="relative">
           <FaCartShopping className="text-2xl text-blue-600 cursor-pointer" />
           <motion.p
             initial={{ y: -10, opacity: 0 }}
