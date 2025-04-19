@@ -6,6 +6,7 @@ import Pagination from '../components/Pagination';
 import { buttonVariants } from '../components/ui/button';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { pageProps } from '../utils/interfaces';
 
 export const metadata: Metadata = {
   title: 'Shop – Tech-Freak',
@@ -29,16 +30,12 @@ export const metadata: Metadata = {
   ],
 };
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string };
-}) {
-  const page = (await searchParams).page;
-  const categoryId = (await searchParams).id;
-  const categoryType = (await searchParams).category;
+export default async function Page({ searchParams }: pageProps) {
+  const { page } = await searchParams;
+  const { id } = await searchParams;
+  const { category } = await searchParams;
   const [response, err] = await tryCatchGet(
-    `products/getProductsFromCategory?id=${categoryId}&page=${page}`,
+    `products/getProductsFromCategory?id=${id}&page=${page}`,
     300
   );
 
@@ -81,9 +78,12 @@ export default async function Page({
           width={500}
         />
       </div>
-      <ProductCategories id={categoryType} />
+      <ProductCategories id={category as string} />
       <div className="my-7 px-6">
-        <ProductsList products={response.data.foundProducts} key={categoryId} />
+        <ProductsList
+          products={response.data.foundProducts}
+          key={id as string}
+        />
       </div>
 
       <Pagination totalPages={response.data.totalPages} />

@@ -1,4 +1,5 @@
 import ErrorPage from '../components/ErrorPage';
+import { pageProps } from '../utils/interfaces';
 import { tryCatchGet } from '../utils/tryCatch';
 import ResetPassword from './components/ResetPassword';
 
@@ -35,11 +36,7 @@ export async function generateMetadata({ searchParams }: Props) {
   };
 }
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string };
-}) {
+export default async function Page({ searchParams }: pageProps) {
   const { token } = await searchParams;
   const [response] = await tryCatchGet(
     `users/valid-reset-password-token?token=${token}`
@@ -48,7 +45,7 @@ export default async function Page({
   return (
     <section className="py-20 px-6">
       <div className="max-w-sm mx-auto">
-        <ResetPassword token={token} />
+        <ResetPassword token={token as string} />
       </div>
     </section>
   );

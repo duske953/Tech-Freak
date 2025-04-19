@@ -1,4 +1,4 @@
-import { productTypes } from '@/app/utils/interfaces';
+import { pageProps, productTypes } from '@/app/utils/interfaces';
 import { tryCatchGet } from '@/app/utils/tryCatch';
 import ProductDetails from './components/ProductDetails';
 import ProductImage from './components/ProductImage';
@@ -42,17 +42,10 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string };
-}) {
-  const productId = await searchParams.id;
-  if (!productId) return <ErrorPage />;
-  const [response, err] = await tryCatchGet(
-    `products/fetchProduct/${productId}`,
-    600
-  );
+export default async function Page({ searchParams }: pageProps) {
+  const { id } = await searchParams;
+  if (!id) return <ErrorPage />;
+  const [response, err] = await tryCatchGet(`products/fetchProduct/${id}`, 600);
   const [getCountry] = await tryCatchGet(
     `https://ipinfo.io/json?token=${process.env.IP_TOKEN}`,
     600,
@@ -83,7 +76,10 @@ export default async function Page({
         <p className="mb-6 text-3xl text-gray-600 font-bold uppercase">
           Recommended
         </p>
-        <ProductsList products={response.data.similarProduct} key={productId} />
+        <ProductsList
+          products={response.data.similarProduct}
+          key={id as string}
+        />
       </div>
     </section>
   );
