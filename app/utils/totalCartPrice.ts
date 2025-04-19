@@ -1,8 +1,11 @@
 import formatPrice from './formatPrice';
+import { productTypes } from './interfaces';
 
-export default function totalCartPrice(cart: Array<any>) {
+export default function totalCartPrice(
+  cart: Array<{ product: productTypes; quantity: number }>
+) {
   const totalPrice = cart?.reduce((acc, product) => {
-    let confirmedPrice = +formatPrice(product.product.price)
+    const confirmedPrice = +formatPrice(product.product.price)
       .split(',')
       .join('');
 

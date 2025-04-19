@@ -1,6 +1,6 @@
-/* eslint-disable import/no-unresolved */
-import { Button, buttonVariants } from '@/app/components/ui/button';
+import { buttonVariants } from '@/app/components/ui/button';
 import { cn } from '@/app/lib/utils';
+import Image from 'next/image';
 import Link from 'next/link';
 export default function Hero() {
   return (
@@ -26,7 +26,9 @@ export default function Hero() {
         </div>
 
         <div>
-          <img
+          <Image
+            width={1000}
+            height={1000}
             src="./Hero_Img.svg"
             alt="Tech Products of Smartphone | Laptop | Tablet"
           />

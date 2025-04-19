@@ -1,5 +1,5 @@
 'use client';
-import { Button, buttonVariants } from '@/app/components/ui/button';
+import { buttonVariants } from '@/app/components/ui/button';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/app/lib/utils';
 import Link from 'next/link';
@@ -33,7 +33,7 @@ export default function AccountLinks({ accActive }: { accActive: boolean }) {
       'users/send-activate-account-email'
     );
     setActivateAccBtn('idle');
-    if (err) {
+    if (!response) {
       toastError(err, 'activate-account');
       return;
     }

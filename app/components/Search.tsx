@@ -1,6 +1,6 @@
 'use client';
 import { AnimatePresence, motion } from 'motion/react';
-import { FormEvent, useContext, useState } from 'react';
+import { FormEvent, useContext } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import Overlay from './Overlay';
 import { Input } from '@/app/components/ui/input';
@@ -14,7 +14,7 @@ export default function Search() {
   if (!context) {
     throw new Error('SearchContext must be used within a SearchProvider');
   }
-  const { openSearch, setOpenSearch, searchValue } = context;
+  const { openSearch, setOpenSearch } = context;
 
   return (
     <>

@@ -6,7 +6,6 @@ import useFormHandlers from '@/app/hook/useFormHandler';
 import revalidate from '@/app/utils/revalidate';
 import { toastError, toastSuccess } from '@/app/utils/toast';
 import tryCatchPost from '@/app/utils/tryCatch';
-import { toast } from 'sonner';
 import { InferType, object, string } from 'yup';
 const updateAcoountSchema = object({
   email: string()
@@ -17,17 +16,21 @@ const updateAcoountSchema = object({
   password: string().required('Your password is required'),
 });
 export default function TerminateAccount() {
-  const { register, handleSubmit, watch, formState } =
+  const { register, handleSubmit, formState } =
     useFormHandlers(updateAcoountSchema);
 
   async function renderTerminateAccount(
     value: InferType<typeof updateAcoountSchema>
   ) {
-    const [_, err] = await tryCatchPost('users/delete-account', 'delete', {
-      Email: value.email,
-      Password: value.password,
-    });
-    if (err) {
+    const [response, err] = await tryCatchPost(
+      'users/delete-account',
+      'delete',
+      {
+        Email: value.email,
+        Password: value.password,
+      }
+    );
+    if (!response) {
       toastError(err, 'terminate-account');
       return;
     }

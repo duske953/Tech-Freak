@@ -24,12 +24,16 @@ export default function UpdatePassword() {
   async function renderUpdateAccountInfo(
     value: InferType<typeof updatePasswordSchema>
   ) {
-    const [_, err] = await tryCatchPost('users/update-password', 'post', {
-      oldPassword: value.oldPassword,
-      newPassword: value.newPassword,
-      passwordConfirm: value.confirmPassword,
-    });
-    if (err) {
+    const [response, err] = await tryCatchPost(
+      'users/update-password',
+      'post',
+      {
+        oldPassword: value.oldPassword,
+        newPassword: value.newPassword,
+        passwordConfirm: value.confirmPassword,
+      }
+    );
+    if (!response) {
       toastError(err, 'update-password');
       return;
     }

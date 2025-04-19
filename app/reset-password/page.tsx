@@ -9,13 +9,13 @@ type Props = {
 
 export async function generateMetadata({ searchParams }: Props) {
   const { token } = await searchParams;
-  const [_, err] = await tryCatchGet(
+  const [response] = await tryCatchGet(
     `users/valid-reset-password-token?token=${token}`
   );
 
   return {
-    title: err ? 'something went wrong' : 'Reset Password – Tech-Freak',
-    description: err
+    title: !response ? 'something went wrong' : 'Reset Password – Tech-Freak',
+    description: !response
       ? 'something went wrong'
       : 'Enter a new password to regain access to your Tech-Freak account. Make sure to choose something secure and easy to remember.',
     keywords: [
@@ -41,10 +41,10 @@ export default async function Page({
   searchParams: { [key: string]: string };
 }) {
   const { token } = await searchParams;
-  const [_, err] = await tryCatchGet(
+  const [response] = await tryCatchGet(
     `users/valid-reset-password-token?token=${token}`
   );
-  if (err) return <ErrorPage />;
+  if (!response) return <ErrorPage />;
   return (
     <section className="py-20 px-6">
       <div className="max-w-sm mx-auto">

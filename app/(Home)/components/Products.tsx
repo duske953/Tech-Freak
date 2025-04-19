@@ -28,7 +28,6 @@ export default function Products({
                   secImg={
                     replaceImgDimension(product.images?.[0], 'SX679') as string
                   }
-                  link={product.link}
                 />
               </li>
             ))}
@@ -50,7 +49,6 @@ export default function Products({
                   secImg={
                     replaceImgDimension(product.images?.[0], 'SX679') as string
                   }
-                  link={product.link}
                 />
               </li>
             ))}

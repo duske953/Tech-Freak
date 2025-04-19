@@ -1,4 +1,3 @@
-import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { Input } from './ui/input';
 
 interface FieldInputTypes {

@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { productTypes } from '../utils/interfaces';
 import Categories from './components/Categories';
 import Features from './components/Features';
 import Hero from './components/Hero';
@@ -7,6 +6,7 @@ import NewsLetter from './components/NewsLetter';
 import ProductOnSale from './components/ProductOnSale';
 import { tryCatchGet } from '../utils/tryCatch';
 import ProductsList from '../components/ProductsList';
+import ErrorPage from '../components/ErrorPage';
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -29,15 +29,10 @@ export const metadata: Metadata = {
   ],
 };
 
-interface pageProductTypes {
-  data: {
-    headphones: Array<productTypes>;
-    laptops: Array<productTypes>;
-  };
-}
-
 export default async function Page() {
   const [response, err] = await tryCatchGet('products/fetchProducts', 600);
+
+  if (err) return <ErrorPage />;
   return (
     <section className="px-6">
       <Hero />

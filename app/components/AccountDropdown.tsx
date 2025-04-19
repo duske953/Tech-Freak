@@ -10,7 +10,6 @@ import {
 import { Button, buttonVariants } from './ui/button';
 import { FaPowerOff } from 'react-icons/fa6';
 import { cn } from '../lib/utils';
-import tryCatch from '../utils/tryCatch';
 import revalidate from '../utils/revalidate';
 import { toast } from 'sonner';
 import tryCatchPost from '../utils/tryCatch';
@@ -27,7 +26,10 @@ export default function AccountDropDown({
       id: 'logout',
     });
     const [response, err] = await tryCatchPost('users/logout');
-    if (err) toast.error(err.message, { position: 'top-right', id: 'logout' });
+    if (!response) {
+      toast.error(err, { position: 'top-right', id: 'logout' });
+      return;
+    }
     toast.success('Logged out successfully', {
       position: 'top-right',
       id: 'logout',

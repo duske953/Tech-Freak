@@ -6,7 +6,6 @@ import useFormHandlers from '@/app/hook/useFormHandler';
 import revalidate from '@/app/utils/revalidate';
 import { toastError, toastSuccess } from '@/app/utils/toast';
 import tryCatchPost from '@/app/utils/tryCatch';
-import { toast } from 'sonner';
 import { InferType, object, string } from 'yup';
 const updateAcoountSchema = object({
   name: string().min(3).max(100, 'name is too long'),
@@ -34,11 +33,15 @@ export default function UpdateAccountInfo({
     value: InferType<typeof updateAcoountSchema>
   ) {
     console.log(value);
-    const [_, err] = await tryCatchPost('users/update-account-info', 'post', {
-      Name: value.name,
-      Email: value.email,
-    });
-    if (err) {
+    const [response, err] = await tryCatchPost(
+      'users/update-account-info',
+      'post',
+      {
+        Name: value.name,
+        Email: value.email,
+      }
+    );
+    if (!response) {
       toastError(err, 'update-account-info');
       return;
     }

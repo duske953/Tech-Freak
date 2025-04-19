@@ -5,7 +5,6 @@ import totalCartPrice from '../utils/totalCartPrice';
 import Link from 'next/link';
 import { buttonVariants } from '../components/ui/button';
 import ErrorPage from '../components/ErrorPage';
-import { Metadata, ResolvingMetadata } from 'next';
 
 async function fetchCheckoutData() {
   const cookieStore = cookies();
@@ -18,15 +17,7 @@ async function fetchCheckoutData() {
   return [response, err];
 }
 
-type Props = {
-  params: Promise<{ id: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-
-export async function generateMetadata(
-  { searchParams }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata() {
   const [response, err] = await fetchCheckoutData();
   const totalPrice = totalCartPrice(response?.userProducts.productsInCart);
 

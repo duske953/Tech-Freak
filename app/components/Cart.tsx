@@ -16,7 +16,6 @@ import { useState } from 'react';
 import { productTypes } from '../utils/interfaces';
 import { motion } from 'motion/react';
 import Image from 'next/image';
-import { toast } from 'sonner';
 import revalidate from '../utils/revalidate';
 import { MdOutlineShoppingCartCheckout } from 'react-icons/md';
 import totalCartPrice from '../utils/totalCartPrice';
@@ -122,13 +121,13 @@ function CartItems({
   const [deleteBtn, setDeleteBtn] = useState<'deleting' | 'idle'>('idle');
   async function renderDeleteProductFromCart(id: string) {
     setDeleteBtn('deleting');
-    const [_, err] = await tryCatchPost(
+    const [response, err] = await tryCatchPost(
       'products/deleteProductFromCart',
       'post',
       { id }
     );
     setDeleteBtn('idle');
-    if (err) {
+    if (!response) {
       toastError(err, 'delete-from-cart');
       return;
     }

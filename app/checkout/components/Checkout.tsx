@@ -1,7 +1,5 @@
 'use client';
 import LoadingBtn from '@/app/components/LoadingBtn';
-import { Button } from '@/app/components/ui/button';
-import tryCatch from '@/app/utils/tryCatch';
 import {
   Elements,
   PaymentElement,
@@ -30,7 +28,6 @@ export default function Checkout({
   clientSecret: string;
   totalPrice: string;
 }) {
-  const router = useRouter();
   const options: StripeElementsOptions = {
     clientSecret,
     appearance: {
@@ -86,9 +83,9 @@ function CheckOutForm({ totalPrice }: { totalPrice: string }) {
       setConfirmBtn('idle');
       return;
     }
-    const [_, err] = await tryCatchPost('users/checkout-success');
+    const [response] = await tryCatchPost('users/checkout-success');
     setConfirmBtn('idle');
-    if (err) {
+    if (!response) {
       toastError('Something went wrong', 'check-out');
       return;
     }

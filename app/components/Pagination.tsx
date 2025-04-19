@@ -16,7 +16,6 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
   });
 
   const page = params.get('page');
-  const id = params.get('id');
   const inValidPage = page === null || page === undefined || isNaN(+page);
   const goBackInvalidPage = inValidPage || +page <= 1;
   const goForwardInvalidPage = inValidPage || +page >= totalPages;

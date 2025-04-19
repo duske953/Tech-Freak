@@ -1,6 +1,5 @@
 'use client';
 import FieldInput from '../../components/FieldInput';
-import { RefObject } from 'react';
 import { InferType, object, ref, string } from 'yup';
 import { toast } from 'sonner';
 import useFormHandlers from '@/app/hook/useFormHandler';
@@ -31,9 +30,9 @@ const signupSchema = object({
 export default function Signup() {
   const { register, handleSubmit, formState } = useFormHandlers(signupSchema);
   async function renderOnSubmit(data: InferType<typeof signupSchema>) {
-    const [_, err] = await tryCatchPost('users/signup', 'post', data);
+    const [response, err] = await tryCatchPost('users/signup', 'post', data);
 
-    if (err) {
+    if (!response) {
       toast.error(err.message, { position: 'top-right', id: 'signup' });
       return;
     }

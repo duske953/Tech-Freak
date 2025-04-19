@@ -1,11 +1,5 @@
 import { ReactNode } from 'react';
-import {
-  FaBus,
-  FaCar,
-  FaCarSide,
-  FaCreditCard,
-  FaMoneyBill,
-} from 'react-icons/fa6';
+import { FaCarSide, FaCreditCard, FaMoneyBill } from 'react-icons/fa6';
 
 export default function Features() {
   return (

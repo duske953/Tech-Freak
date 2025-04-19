@@ -32,8 +32,8 @@ export default async function Page({
 }) {
   const { token } = await searchParams;
 
-  const [_, err] = await tryCatchGet(`users/activate?token=${token}`, 0);
-  if (err) return <ErrorPage />;
+  const [response] = await tryCatchGet(`users/activate?token=${token}`, 0);
+  if (!response) return <ErrorPage />;
   return (
     <section className="py-20 px-6">
       <div className="flex flex-col gap-6 items-center">

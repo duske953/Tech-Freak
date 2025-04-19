@@ -6,7 +6,6 @@ import Navbar, { BottomNavBar } from './components/Navbar';
 import Footer from './components/Footer';
 import { Toaster } from './components/ui/sonner';
 import { Suspense } from 'react';
-import Overlay from './components/Overlay';
 import { SearchOverlay } from './components/Search';
 import SearchContextProvider from './context/SearchContext';
 

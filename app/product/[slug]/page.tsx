@@ -6,17 +6,16 @@ import ProductMetadata from './components/ProductMetadata';
 import ProductsList from '@/app/components/ProductsList';
 import ErrorPage from '@/app/components/ErrorPage';
 
-import type { Metadata, ResolvingMetadata } from 'next';
+import type { Metadata } from 'next';
 
 type Props = {
   params: Promise<{ id: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export async function generateMetadata(
-  { searchParams }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  searchParams,
+}: Props): Promise<Metadata> {
   const { id } = await searchParams;
   const [response, err] = await tryCatchGet(`products/fetchProduct/${id}`, 600);
 
@@ -54,7 +53,7 @@ export default async function Page({
     `products/fetchProduct/${productId}`,
     600
   );
-  const [getCountry, errCountry] = await tryCatchGet(
+  const [getCountry] = await tryCatchGet(
     `https://ipinfo.io/json?token=${process.env.IP_TOKEN}`,
     600,
     undefined,

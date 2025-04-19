@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const [response, err] = await getLoggedUser();
+  const [response] = await getLoggedUser();
   return (
     <div>
       <h1 className="mb-5 text-xl font-bold">

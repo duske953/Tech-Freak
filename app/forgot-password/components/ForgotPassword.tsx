@@ -2,7 +2,6 @@
 
 import FieldInput from '@/app/components/FieldInput';
 import LoadingBtn from '@/app/components/LoadingBtn';
-import { Button } from '@/app/components/ui/button';
 import useFormHandlers from '@/app/hook/useFormHandler';
 import tryCatchPost from '@/app/utils/tryCatch';
 import { toast } from 'sonner';
@@ -23,10 +22,14 @@ export default function ForgotPassword() {
   async function renderForgotPassword(
     value: InferType<typeof forgotPasswordSchema>
   ) {
-    const [response, err] = await tryCatchPost('users/forgot-password', {
-      Email: value.email,
-    });
-    if (err) {
+    const [response, err] = await tryCatchPost(
+      'users/forgot-password',
+      'post',
+      {
+        Email: value.email,
+      }
+    );
+    if (!response) {
       toast.error(err, {
         id: 'forgot-password',
         position: 'top-right',

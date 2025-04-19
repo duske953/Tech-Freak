@@ -42,7 +42,6 @@ export default function ProductsList({
             rating={+product.rating}
             id={product.asin}
             secImg={replaceImgDimension(product.images?.[0], 'SX679') as string}
-            link={product.link}
           />
         </motion.li>
       ))}

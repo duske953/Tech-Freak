@@ -18,14 +18,12 @@ export default function ProductCard({
   price,
   rating,
   id,
-  link,
   secImg,
 }: {
   title: string;
   imageSrc: string;
   price: string;
   rating: number;
-  link: string;
   id: string;
   secImg: string;
 }) {

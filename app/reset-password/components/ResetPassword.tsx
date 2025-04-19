@@ -20,19 +20,19 @@ const resetPasswordSchema = object({
 });
 
 export default function ResetPassword({ token }: { token: string }) {
-  const { register, handleSubmit, errors, isSubmitting, isValid } =
+  const { register, handleSubmit, formState } =
     useFormHandlers(resetPasswordSchema);
   const router = useRouter();
   async function renderResetPassword(
     value: InferType<typeof resetPasswordSchema>
   ) {
-    const [response, err] = await tryCatchPost('users/reset-password', {
+    const [response, err] = await tryCatchPost('users/reset-password', 'post', {
       password: value.password,
       confirmPassword: value.confirmPassword,
       token,
     });
 
-    if (err) {
+    if (!response) {
       toast.error(err, { position: 'top-right', id: 'reset-password' });
       return;
     }
@@ -52,7 +52,7 @@ export default function ResetPassword({ token }: { token: string }) {
       <FieldInput
         placeholder="Password"
         type="password"
-        errors={errors}
+        errors={formState.errors}
         field="password"
         register={register}
       />
@@ -60,12 +60,12 @@ export default function ResetPassword({ token }: { token: string }) {
       <FieldInput
         placeholder="confirm password"
         type="password"
-        errors={errors}
+        errors={formState.errors}
         field="confirmPassword"
         register={register}
       />
       <Button
-        disabled={!isValid || isSubmitting}
+        disabled={!formState.isValid || formState.isSubmitting}
         variant="secondary"
         className="cursor-pointer"
       >

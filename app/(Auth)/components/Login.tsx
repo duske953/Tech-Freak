@@ -4,7 +4,6 @@ import useFormHandlers from '@/app/hook/useFormHandler';
 import revalidate from '@/app/utils/revalidate';
 import { toastError, toastSuccess } from '@/app/utils/toast';
 import tryCatchPost from '@/app/utils/tryCatch';
-import { RefObject } from 'react';
 import { InferType, object, string } from 'yup';
 
 const loginSchema = object({

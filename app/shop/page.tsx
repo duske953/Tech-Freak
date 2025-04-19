@@ -41,7 +41,6 @@ export default async function Page({
     `products/getProductsFromCategory?id=${categoryId}&page=${page}`,
     300
   );
-  console.log(err);
 
   if (err) {
     return (

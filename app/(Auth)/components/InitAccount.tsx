@@ -1,5 +1,5 @@
 'use client';
-import { Ref, RefObject, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button, buttonVariants } from '../../components/ui/button';
 import { motion } from 'motion/react';
 import Signup from '../components/Signup';
