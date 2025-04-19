@@ -4,8 +4,7 @@ import getLoggedUser from '@/app/utils/getLoggedUser';
 import ErrorPage from '@/app/components/ErrorPage';
 
 export default async function Page() {
-  const [response, err] = await getLoggedUser();
-  if (err) return <ErrorPage />;
+  const [response] = await getLoggedUser();
   if (response) redirect('/');
   return <InitAccount />;
 }
