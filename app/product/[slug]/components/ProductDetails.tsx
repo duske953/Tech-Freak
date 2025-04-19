@@ -13,7 +13,6 @@ import { FaCartShopping, FaMinus, FaPlus, FaWhatsapp } from 'react-icons/fa6';
 import { Rating } from 'react-simple-star-rating';
 import { MdWarning } from 'react-icons/md';
 import NumberFlow from '@number-flow/react';
-import { toast } from 'sonner';
 import { Dispatch, useState } from 'react';
 import revalidate from '@/app/utils/revalidate';
 import tryCatchPost from '@/app/utils/tryCatch';
