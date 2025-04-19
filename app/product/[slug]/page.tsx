@@ -1,0 +1,91 @@
+import { productTypes } from '@/app/utils/interfaces';
+import { tryCatchGet } from '@/app/utils/tryCatch';
+import ProductDetails from './components/ProductDetails';
+import ProductImage from './components/ProductImage';
+import ProductMetadata from './components/ProductMetadata';
+import ProductsList from '@/app/components/ProductsList';
+import ErrorPage from '@/app/components/ErrorPage';
+
+import type { Metadata, ResolvingMetadata } from 'next';
+
+type Props = {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata(
+  { searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { id } = await searchParams;
+  const [response, err] = await tryCatchGet(`products/fetchProduct/${id}`, 600);
+
+  const productTitle = response?.data.product.title;
+  return {
+    title: err ? 'Something went wrong' : productTitle,
+    description: err
+      ? 'Something went wrong'
+      : `Discover the details of the ${productTitle} at Tech-Freak. Explore its features, specifications, and pricing. Get yours today!`,
+    keywords: [
+      'product details',
+      'Tech-Freak product',
+      'buy tech products',
+      'latest gadgets',
+      'tech products',
+      'electronics store',
+      'product features',
+      'product specifications',
+      'shop online',
+      'Tech-Freak store',
+      'product review',
+      'buy now',
+    ],
+  };
+}
+
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string };
+}) {
+  const productId = await searchParams.id;
+  if (!productId) return <ErrorPage />;
+  const [response, err] = await tryCatchGet(
+    `products/fetchProduct/${productId}`,
+    600
+  );
+  const [getCountry, errCountry] = await tryCatchGet(
+    `https://ipinfo.io/json?token=${process.env.IP_TOKEN}`,
+    600,
+    undefined,
+    true
+  );
+  if (err) return <ErrorPage />;
+
+  const productData = response.data.product as productTypes;
+  return (
+    <section className="my-8">
+      <div className="grid grid-cols-2 gap-7 px-6 max-md:grid-cols-1 max-sm:px-3">
+        <ProductImage
+          title={productData.title}
+          image={productData.image}
+          images={productData.images}
+        />
+        <ProductDetails
+          deliverTo={{ region: getCountry.region, country: getCountry.country }}
+          productData={productData}
+        />
+      </div>
+      <ProductMetadata
+        productSpecs={productData.details.productSpecs}
+        aboutProduct={productData.details.aboutProduct}
+      />
+      <div className="py-20 px-6">
+        <p className="mb-6 text-3xl text-gray-600 font-bold uppercase">
+          Recommended
+        </p>
+        <ProductsList products={response.data.similarProduct} key={productId} />
+      </div>
+    </section>
+  );
+}
