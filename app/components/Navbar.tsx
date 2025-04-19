@@ -58,16 +58,14 @@ export async function BottomNavBar() {
   const [response, err] = await getLoggedUser();
   const cart = response?.data.user.productsInCart;
   return (
-    <div className="bg-slate-200 fixed w-full z-[10] bottom-0 hidden max-lg:block">
+    <div className="bg-slate-200 sticky w-full z-[10] bottom-0 hidden max-lg:block">
       <ul className="flex justify-between p-4 items-center">
         <li>
           <Link href="/shop?category=monitors&id=16225007011&page=1">
             <FaShop className="text-3xl text-blue-600" />
           </Link>
         </li>
-
         <Search />
-
         <li>
           {response ? (
             <AccountDropDown
