@@ -52,7 +52,7 @@ export default function ProductDetails({
       }
     );
     setAddToCart('idle');
-    if (err) {
+    if (!response) {
       toast.error(err, { position: 'top-right', id: 'addToCart' });
       return;
     }
