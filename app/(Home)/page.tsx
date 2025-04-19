@@ -9,23 +9,24 @@ import ProductsList from '../components/ProductsList';
 import ErrorPage from '../components/ErrorPage';
 
 export const metadata: Metadata = {
-  title: 'Home',
-  description: 'Welcome to Tech-Freak, your one-stop shop for all things tech!',
+  title: 'Home – Tech-Freak',
+  description:
+    'Explore top tech products including phones, laptops, and accessories. Shop online at Tech-Freak and discover what fits your needs.',
   keywords: [
-    'tech',
-    'electronics',
-    'gadgets',
-    'online shopping',
     'tech store',
-    'latest technology',
-    'tech reviews',
-    'tech news',
-    'tech accessories',
-    'tech deals',
-    'tech trends',
+    'electronics',
+    'online shopping',
     'tech products',
-    'tech innovations',
-    'tech lifestyle',
+    'phones',
+    'laptops',
+    'gadgets',
+    'headphones',
+    'smart devices',
+    'computer accessories',
+    'latest tech',
+    'buy electronics',
+    'Tech-Freak',
+    'shop tech online',
   ],
 };
 
