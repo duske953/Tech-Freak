@@ -37,8 +37,7 @@ export async function tryCatchGet(
 export default async function tryCatchPost(
   route: string,
   method: 'post' | 'delete' | 'patch' = 'post',
-  body: any = {},
-  cookie: string = ''
+  body: any = {}
 ) {
   try {
     const cookieStore = cookies();
