@@ -32,9 +32,8 @@ export default function RootLayout({
           <NextTopLoader showSpinner={false} />
         </Suspense>
         <SearchContextProvider>
-          <Navbar />
           <SearchOverlay />
-          <BottomNavBar />
+          <Navbar />
         </SearchContextProvider>
 
         <main>{children}</main>
@@ -43,6 +42,10 @@ export default function RootLayout({
           className={`${fredoka.className}  antialiased`}
         />
         <Footer />
+        <SearchContextProvider>
+          <SearchOverlay />
+          <BottomNavBar />
+        </SearchContextProvider>
         {/* <SearchContextProvider></SearchContextProvider> */}
       </body>
     </html>
