@@ -4,6 +4,7 @@ import { tryCatchGet } from '../utils/tryCatch';
 import { cn } from '../lib/utils';
 import { buttonVariants } from '../components/ui/button';
 import { Metadata } from 'next';
+import { pageProps } from '../utils/interfaces';
 
 export const metadata: Metadata = {
   title: 'Account Activation – Tech-Freak',
@@ -25,11 +26,7 @@ export const metadata: Metadata = {
   ],
 };
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string };
-}) {
+export default async function Page({ searchParams }: pageProps) {
   const { token } = await searchParams;
 
   const [response] = await tryCatchGet(`users/activate?token=${token}`, 0);
