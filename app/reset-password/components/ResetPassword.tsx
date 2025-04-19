@@ -2,7 +2,9 @@
 import FieldInput from '@/app/components/FieldInput';
 import { Button } from '@/app/components/ui/button';
 import useFormHandlers from '@/app/hook/useFormHandler';
+import { clearJwtCookie } from '@/app/utils/cookies';
 import revalidate from '@/app/utils/revalidate';
+import { toastError, toastSuccess } from '@/app/utils/toast';
 import tryCatchPost from '@/app/utils/tryCatch';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
@@ -33,14 +35,13 @@ export default function ResetPassword({ token }: { token: string }) {
     });
 
     if (!response) {
+      toastError(err, 'reset-password');
       toast.error(err, { position: 'top-right', id: 'reset-password' });
       return;
     }
-    toast.success('Password reset success', {
-      position: 'top-right',
-      id: 'reset-password',
-      duration: 5000,
-    });
+    clearJwtCookie();
+    toastSuccess('Password reset success', 'reset-password', 5000);
+
     revalidate('/reset-password');
     router.replace('/account');
   }

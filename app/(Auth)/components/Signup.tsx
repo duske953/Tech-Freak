@@ -6,7 +6,7 @@ import useFormHandlers from '@/app/hook/useFormHandler';
 import revalidate from '@/app/utils/revalidate';
 import tryCatchPost from '@/app/utils/tryCatch';
 import LoadingBtn from '@/app/components/LoadingBtn';
-import setCookie from '@/app/utils/cookies';
+import { setCookie } from '@/app/utils/cookies';
 
 const signupSchema = object({
   fullName: string()

@@ -20,6 +20,7 @@ import tryCatchPost from '@/app/utils/tryCatch';
 import formatPrice from '@/app/utils/formatPrice';
 import { cn } from '@/app/lib/utils';
 import { usePathname } from 'next/navigation';
+import { toastError, toastSuccess } from '@/app/utils/toast';
 const MotionNumberFlow = motion.create(NumberFlow);
 export default function ProductDetails({
   productData,
@@ -53,15 +54,11 @@ export default function ProductDetails({
     );
     setAddToCart('idle');
     if (!response) {
-      toast.error(err, { position: 'top-right', id: 'addToCart' });
+      toastError(err, 'addToCart');
+
       return;
     }
-
-    toast.success('Product added to cart', {
-      position: 'top-right',
-      id: 'addToCart',
-    });
-
+    toastSuccess('Product addded to cart', 'addToCart');
     revalidate('/product/[slug]');
   }
 

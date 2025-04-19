@@ -13,6 +13,8 @@ import { cn } from '../lib/utils';
 import revalidate from '../utils/revalidate';
 import { toast } from 'sonner';
 import tryCatchPost from '../utils/tryCatch';
+import { clearJwtCookie } from '../utils/cookies';
+import { toastSuccess } from '../utils/toast';
 export default function AccountDropDown({
   id,
   name,
@@ -27,13 +29,13 @@ export default function AccountDropDown({
     });
     const [response, err] = await tryCatchPost('users/logout');
     if (!response) {
+      toastSuccess(err, 'logout');
       toast.error(err, { position: 'top-right', id: 'logout' });
       return;
     }
-    toast.success('Logged out successfully', {
-      position: 'top-right',
-      id: 'logout',
-    });
+    clearJwtCookie();
+    toastSuccess('Logged out successfully', 'logout');
+
     revalidate('/product/[slug]');
   }
 

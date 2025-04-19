@@ -3,6 +3,7 @@
 import FieldInput from '@/app/components/FieldInput';
 import LoadingBtn from '@/app/components/LoadingBtn';
 import useFormHandlers from '@/app/hook/useFormHandler';
+import { clearJwtCookie } from '@/app/utils/cookies';
 import revalidate from '@/app/utils/revalidate';
 import { toastError, toastSuccess } from '@/app/utils/toast';
 import tryCatchPost from '@/app/utils/tryCatch';
@@ -34,6 +35,7 @@ export default function TerminateAccount() {
       toastError(err, 'terminate-account');
       return;
     }
+    clearJwtCookie();
     toastSuccess('Your account has been closed', 'terminate-account');
     revalidate('/account[user]/terminate-account');
   }
