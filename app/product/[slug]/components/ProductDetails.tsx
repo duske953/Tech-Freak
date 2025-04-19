@@ -61,7 +61,6 @@ export default function ProductDetails({
     revalidate('/product/[slug]');
   }
 
-  console.log(pathname);
   return (
     <div className="flex gap-8 flex-col px-6 rounded-md max-sm:px-3">
       <h1 className="text-2xl leading-loose font-bold text-gray-600 max-sm:text-xl">
