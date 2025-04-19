@@ -1,4 +1,7 @@
 // import { API_URL } from './constants';
+'use server';
+
+import { cookies } from 'next/headers';
 const API_URL =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000/api/v1'
@@ -38,17 +41,18 @@ export default async function tryCatchPost(
   cookie: string = ''
 ) {
   try {
+    const cookieStore = cookies();
+    const cookieHeader = (await cookieStore).toString();
     const response = await fetch(`${API_URL}/${route}`, {
       method,
       body: JSON.stringify(body),
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-        cookie,
+        cookie: cookieHeader,
       },
     });
     if (response.status === 429) {
-      console.log('okay');
       throw new Error('Too many requests, try again later');
     }
     const data = await response.json();

@@ -32,12 +32,12 @@ export default function Signup() {
   const { register, handleSubmit, formState } = useFormHandlers(signupSchema);
   async function renderOnSubmit(data: InferType<typeof signupSchema>) {
     const [response, err] = await tryCatchPost('users/signup', 'post', data);
-    await setCookie(response.data.token);
+
     if (!response) {
       toast.error(err, { position: 'top-right', id: 'signup' });
       return;
     }
-
+    await setCookie(response.data.token);
     toast.success('Account created successfully', {
       position: 'top-right',
       id: 'signup',

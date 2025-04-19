@@ -1,6 +1,7 @@
 import FieldInput from '@/app/components/FieldInput';
 import LoadingBtn from '@/app/components/LoadingBtn';
 import useFormHandlers from '@/app/hook/useFormHandler';
+import setCookie from '@/app/utils/cookies';
 import revalidate from '@/app/utils/revalidate';
 import { toastError, toastSuccess } from '@/app/utils/toast';
 import tryCatchPost from '@/app/utils/tryCatch';
@@ -31,6 +32,7 @@ export default function Login() {
       toastError(err, 'login');
       return;
     }
+    await setCookie(response.data.token);
     toastSuccess(`Welcome ${response.data.user.Name}`, 'login');
     revalidate('/account');
   }
