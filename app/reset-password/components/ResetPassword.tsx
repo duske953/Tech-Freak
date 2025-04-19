@@ -41,7 +41,7 @@ export default function ResetPassword({ token }: { token: string }) {
       id: 'reset-password',
       duration: 5000,
     });
-    revalidate('/');
+    revalidate('/reset-password');
     router.replace('/account');
   }
   return (

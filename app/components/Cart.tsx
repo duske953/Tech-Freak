@@ -132,7 +132,7 @@ function CartItems({
       return;
     }
     toastSuccess('Product removed', 'delete-from-cart');
-    revalidate('/');
+    revalidate('/product/[slug]');
   }
   return (
     <div

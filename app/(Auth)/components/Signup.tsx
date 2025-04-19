@@ -41,7 +41,7 @@ export default function Signup() {
       position: 'top-right',
       id: 'signup',
     });
-    revalidate('/');
+    revalidate('/account');
   }
   return (
     <form

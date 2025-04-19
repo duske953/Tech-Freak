@@ -52,15 +52,17 @@ export default function ProductDetails({
       }
     );
     setAddToCart('idle');
-    if (err) toast.error(err, { position: 'top-right', id: 'addToCart' });
-    if (response) {
-      toast.success('Product added to cart', {
-        position: 'top-right',
-        id: 'addToCart',
-      });
-
-      revalidate('/');
+    if (err) {
+      toast.error(err, { position: 'top-right', id: 'addToCart' });
+      return;
     }
+
+    toast.success('Product added to cart', {
+      position: 'top-right',
+      id: 'addToCart',
+    });
+
+    revalidate('/product/[slug]');
   }
 
   console.log(pathname);
