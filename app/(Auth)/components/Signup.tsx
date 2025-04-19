@@ -33,7 +33,7 @@ export default function Signup() {
     const [response, err] = await tryCatchPost('users/signup', 'post', data);
 
     if (!response) {
-      toast.error(err.message, { position: 'top-right', id: 'signup' });
+      toast.error(err, { position: 'top-right', id: 'signup' });
       return;
     }
 
