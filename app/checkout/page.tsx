@@ -54,7 +54,7 @@ export async function generateMetadata() {
 export default async function Page() {
   const [response, err] = await fetchCheckoutData();
   if (err) {
-    return <ErrorPage msg="Too many requests, try again later" />;
+    return <ErrorPage />;
   }
 
   if (response?.userProducts.productsInCart <= 0)
