@@ -46,12 +46,7 @@ export default async function Page({ searchParams }: pageProps) {
   const { id } = await searchParams;
   if (!id) return <ErrorPage />;
   const [response, err] = await tryCatchGet(`products/fetchProduct/${id}`, 600);
-  const [getCountry] = await tryCatchGet(
-    `https://ipinfo.io/json?token=${process.env.IP_TOKEN}`,
-    600,
-    undefined,
-    true
-  );
+
   if (err) return <ErrorPage />;
 
   const productData = response.data.product as productTypes;
@@ -63,10 +58,7 @@ export default async function Page({ searchParams }: pageProps) {
           image={productData.image}
           images={productData.images}
         />
-        <ProductDetails
-          deliverTo={{ region: getCountry.region, country: getCountry.country }}
-          productData={productData}
-        />
+        <ProductDetails productData={productData} />
       </div>
       <ProductMetadata
         productSpecs={productData.details.productSpecs}

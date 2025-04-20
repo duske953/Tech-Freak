@@ -13,7 +13,7 @@ import { FaCartShopping, FaMinus, FaPlus, FaWhatsapp } from 'react-icons/fa6';
 import { Rating } from 'react-simple-star-rating';
 import { MdWarning } from 'react-icons/md';
 import NumberFlow from '@number-flow/react';
-import { Dispatch, useState } from 'react';
+import { Dispatch, useEffect, useState } from 'react';
 import revalidate from '@/app/utils/revalidate';
 import tryCatchPost from '@/app/utils/tryCatch';
 import formatPrice from '@/app/utils/formatPrice';
@@ -22,13 +22,15 @@ import { toastError, toastSuccess } from '@/app/utils/toast';
 const MotionNumberFlow = motion.create(NumberFlow);
 export default function ProductDetails({
   productData,
-  deliverTo,
 }: {
-  deliverTo: { region: string; country: string };
   productData: productTypes;
 }) {
   const [quantity, setQuantity] = useState(1);
   const [addToCart, setAddToCart] = useState<'submitting' | 'idle'>('idle');
+  const [currentLocation, setCurrentLocation] = useState<null | {
+    region: string;
+    country: string;
+  }>(null);
   const productPrice = (
     quantity * +formatPrice(productData.price).split(',').join('')
   ).toFixed(2);
@@ -58,6 +60,27 @@ export default function ProductDetails({
     toastSuccess('Product addded to cart', 'addToCart');
     revalidate('/product/[slug]');
   }
+
+  useEffect(() => {
+    let ignore = false;
+    async function fetchLocation() {
+      setCurrentLocation(null);
+      const response = await fetch(
+        `https://ipinfo.io/json?token=${process.env.NEXT_PUBLIC_IP_TOKEN}`
+      );
+      const data = await response.json();
+      if (!response.ok) {
+        setCurrentLocation(null);
+      }
+      if (!ignore) {
+        setCurrentLocation({ country: data.country, region: data.region });
+      }
+    }
+    fetchLocation();
+    return () => {
+      ignore = true;
+    };
+  }, []);
 
   return (
     <div className="flex gap-8 flex-col px-6 rounded-md max-sm:px-3">
@@ -89,9 +112,11 @@ export default function ProductDetails({
       </div>
 
       <div>
-        <p className="font-bold">
-          Deliver to {deliverTo.region}, {deliverTo.country}
-        </p>
+        {currentLocation && (
+          <p className="font-bold">
+            Deliver to {currentLocation.region}, {currentLocation.country}
+          </p>
+        )}
       </div>
       <div className="flex items-center justify-between">
         <p className="relative">
