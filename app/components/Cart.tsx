@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { FaCartShopping } from 'react-icons/fa6';
 import { buttonVariants } from './ui/button';
 import { cn } from '../lib/utils';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { productTypes } from '../utils/interfaces';
 import { motion } from 'motion/react';
 import Image from 'next/image';
@@ -87,6 +87,7 @@ export default function Cart({
                 <div className="flex flex-col gap-10 py-10">
                   {cart.map((product) => (
                     <CartItems
+                      setModalOpen={setModalOpen}
                       product={product}
                       key={product.product._id}
                       length={cart.length}
@@ -120,9 +121,11 @@ export default function Cart({
 function CartItems({
   product,
   length,
+  setModalOpen,
 }: {
   product: { product: productTypes; quantity: number; productDiscount: number };
   length: number;
+  setModalOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   const [deleteBtn, setDeleteBtn] = useState<'deleting' | 'idle'>('idle');
   async function renderDeleteProductFromCart(id: string) {
@@ -148,6 +151,7 @@ function CartItems({
       )}
     >
       <Link
+        onClick={() => setModalOpen(false)}
         href={`/product/${product.product.title
           .slice(0, 20)
           .split(' ')
