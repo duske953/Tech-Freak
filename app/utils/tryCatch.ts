@@ -5,7 +5,7 @@ import { cookies } from 'next/headers';
 const API_URL =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000/api/v1'
-    : 'https://ecommerce-backend-v2-pie.vercel.app/api/v1';
+    : process.env.BACKEND_URL;
 export async function tryCatchGet(
   route: string,
   revalidate: number = 0,
