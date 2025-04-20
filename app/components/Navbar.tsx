@@ -78,7 +78,7 @@ function SecondaryNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel>
-          <Link href="/About-us">About us</Link>
+          <Link href="/about-us">About us</Link>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuLabel>
