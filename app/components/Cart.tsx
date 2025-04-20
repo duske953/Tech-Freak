@@ -86,7 +86,11 @@ export default function Cart({
               {!err && cart?.length > 0 && (
                 <div className="flex flex-col gap-10 py-10">
                   {cart.map((product) => (
-                    <CartItems product={product} key={product.product._id} />
+                    <CartItems
+                      product={product}
+                      key={product.product._id}
+                      length={cart.length}
+                    />
                   ))}
                 </div>
               )}
@@ -115,8 +119,10 @@ export default function Cart({
 
 function CartItems({
   product,
+  length,
 }: {
   product: { product: productTypes; quantity: number; productDiscount: number };
+  length: number;
 }) {
   const [deleteBtn, setDeleteBtn] = useState<'deleting' | 'idle'>('idle');
   async function renderDeleteProductFromCart(id: string) {
@@ -136,49 +142,61 @@ function CartItems({
   }
   return (
     <div
-      key={product.product._id}
-      className="flex gap-4 items-center border-b pb-4 last:border-b-0 last:pb-0"
+      className={cn(
+        'border-b pb-4 last:border-b-0 last:pb-0 flex flex-col',
+        length === 1 && 'last:border-b last:pb-4'
+      )}
     >
-      <Image
-        width={100}
-        height={100}
-        src={product.product.image}
-        alt={product.product.title}
-        className="size-20 object-contain rounded-md"
-      />
-      <div className="flex flex-col gap-1">
-        <p className="">{product.product.title.slice(0, 20)}...</p>
-        <div>
-          <div className="flex gap-5">
-            <p className={cn(product.quantity >= 5 && 'line-through')}>
-              $
-              {new Intl.NumberFormat().format(
-                product.quantity *
-                  +formatPrice(product.product.price).split(',').join('')
-              )}
-            </p>
-            {product.quantity >= 5 && (
-              <p className="font-bold text-blue-800">
-                ${new Intl.NumberFormat().format(product.productDiscount)}
+      <Link
+        href={`/product/${product.product.title
+          .slice(0, 20)
+          .split(' ')
+          .join('-')}/?id=${product.product.asin}`}
+        key={product.product._id}
+        className="flex gap-4 items-center"
+      >
+        <Image
+          width={100}
+          height={100}
+          src={product.product.image}
+          alt={product.product.title}
+          className="size-20 object-contain rounded-md"
+        />
+        <div className="flex flex-col gap-1">
+          <p className="">{product.product.title.slice(0, 20)}...</p>
+          <div>
+            <div className="flex gap-5">
+              <p className={cn(product.quantity >= 5 && 'line-through')}>
+                $
+                {new Intl.NumberFormat().format(
+                  product.quantity *
+                    +formatPrice(product.product.price).split(',').join('')
+                )}
               </p>
-            )}
+              {product.quantity >= 5 && (
+                <p className="font-bold text-blue-800">
+                  ${new Intl.NumberFormat().format(product.productDiscount)}
+                </p>
+              )}
+            </div>
+            <p className="text-sm font-bold">qty: {product.quantity}</p>
           </div>
-          <p className="text-sm font-bold">qty: {product.quantity}</p>
         </div>
-        <div className="flex items-center gap-6 mt-4">
-          {/* <Button className="cursor-pointer" variant="outline">
+      </Link>
+
+      <div className="flex items-center gap-6 mt-4 self-end">
+        {/* <Button className="cursor-pointer" variant="outline">
                             Check Out
                           </Button> */}
-          <LoadingBtn
-            isSubmitting={deleteBtn === 'deleting'}
-            disabled={deleteBtn === 'deleting'}
-            className="text-red-600 hover:text-red-500 cursor-pointer"
-            onClick={() => renderDeleteProductFromCart(product.product._id)}
-            variant="outline"
-          >
-            Delete
-          </LoadingBtn>
-        </div>
+        <LoadingBtn
+          isSubmitting={deleteBtn === 'deleting'}
+          disabled={deleteBtn === 'deleting'}
+          className="text-red-600 hover:text-red-500 cursor-pointer"
+          onClick={() => renderDeleteProductFromCart(product.product._id)}
+          variant="outline"
+        >
+          Delete
+        </LoadingBtn>
       </div>
     </div>
   );
