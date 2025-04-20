@@ -18,7 +18,6 @@ import revalidate from '@/app/utils/revalidate';
 import tryCatchPost from '@/app/utils/tryCatch';
 import formatPrice from '@/app/utils/formatPrice';
 import { cn } from '@/app/lib/utils';
-import { usePathname } from 'next/navigation';
 import { toastError, toastSuccess } from '@/app/utils/toast';
 const MotionNumberFlow = motion.create(NumberFlow);
 export default function ProductDetails({
@@ -30,7 +29,6 @@ export default function ProductDetails({
 }) {
   const [quantity, setQuantity] = useState(1);
   const [addToCart, setAddToCart] = useState<'submitting' | 'idle'>('idle');
-  const pathname = usePathname();
   const productPrice = (
     quantity * +formatPrice(productData.price).split(',').join('')
   ).toFixed(2);
