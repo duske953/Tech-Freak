@@ -12,31 +12,31 @@ const categoryData = [
   {
     icon: <FaComputer />,
     title: 'Computer Components',
-    link: '/shop?category=computer-components&id=193870011&page=1',
+    link: '/shop?category=computer-components&id=193870013&page=1',
   },
 
   {
     icon: <FaCamera />,
     title: 'Camera',
-    link: '/shop?category=cameras&id=photo&page=1',
+    link: '/shop?category=cameras&id=16225007017&page=1',
   },
 
   {
     icon: <FaPhone />,
     title: 'Smartphone',
-    link: '/shop?category=cell-phones&id=2811119011&page=1',
+    link: '/shop?category=cell-phones&id=16225007016&page=1',
   },
 
   {
     icon: <FaHeadphones />,
     title: 'Headphone',
-    link: '/shop?category=headphones&id=172541&page=1',
+    link: '/shop?category=headphones&id=16225007015&page=1',
   },
 
   {
     icon: <FaLaptop />,
     title: 'Laptop',
-    link: '/shop?category=laptops&id=13896617011&page=1',
+    link: '/shop?category=laptops&id=16225007012&page=1',
   },
 ];
 
