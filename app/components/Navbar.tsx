@@ -6,6 +6,16 @@ import getLoggedUser from '../utils/getLoggedUser';
 import AccountDropDown from './AccountDropdown';
 import Cart from './Cart';
 import { FaShop } from 'react-icons/fa6';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu';
+import { CgMenuLeft } from 'react-icons/cg';
+import { cn } from '../lib/utils';
+import { buttonVariants } from './ui/button';
 
 export default async function Navbar() {
   const [response, err] = await getLoggedUser();
@@ -16,6 +26,7 @@ export default async function Navbar() {
         <Link className="text-3xl text-blue-700 uppercase font-bold" href="/">
           Tech-Freak
         </Link>
+        <SecondaryNav />
         <ul className="flex gap-24 items-center max-lg:justify-around max-lg:hidden">
           <li>
             <Link href="/shop?category=monitors&id=16225007011&page=1">
@@ -51,6 +62,30 @@ export default async function Navbar() {
         </ul>
       </nav>
     </header>
+  );
+}
+
+function SecondaryNav() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        className={cn(
+          buttonVariants({ variant: 'outline' }),
+          'cursor-pointer ml-auto hidden max-lg:block text-3xl'
+        )}
+      >
+        <CgMenuLeft />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuLabel>
+          <Link href="/About-us">About us</Link>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuLabel>
+          <Link href="/contact-us">Contact us</Link>
+        </DropdownMenuLabel>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
 
