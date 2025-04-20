@@ -32,7 +32,6 @@ export default function UpdateAccountInfo({
   async function renderUpdateAccountInfo(
     value: InferType<typeof updateAcoountSchema>
   ) {
-    console.log(value);
     const [response, err] = await tryCatchPost(
       'users/update-account-info',
       'post',
