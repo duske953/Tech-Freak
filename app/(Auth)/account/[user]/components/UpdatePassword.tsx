@@ -2,6 +2,7 @@
 import FieldInput from '@/app/components/FieldInput';
 import LoadingBtn from '@/app/components/LoadingBtn';
 import useFormHandlers from '@/app/hook/useFormHandler';
+import { setCookie } from '@/app/utils/cookies';
 import { toastError, toastSuccess } from '@/app/utils/toast';
 import tryCatchPost from '@/app/utils/tryCatch';
 import { InferType, object, ref, string } from 'yup';
@@ -37,6 +38,7 @@ export default function UpdatePassword() {
       toastError(err, 'update-password');
       return;
     }
+    await setCookie(response.data.token);
     toastSuccess('password updated', 'update-password');
     reset();
   }
