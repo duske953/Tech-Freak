@@ -54,7 +54,6 @@ export default function ProductDetails({
     setAddToCart('idle');
     if (!response) {
       toastError(err, 'addToCart');
-
       return;
     }
     toastSuccess('Product addded to cart', 'addToCart');
@@ -173,19 +172,15 @@ export default function ProductDetails({
       <div>
         <p className="mb-4 text-xl font-bold">Share</p>
         <div className="flex items-center gap-6">
-          <FacebookShareButton url="https://eloho.vercel.app">
+          <FacebookShareButton url={window.location.href}>
             <FacebookIcon size={32} round />
           </FacebookShareButton>
 
-          <TwitterShareButton url="/">
+          <TwitterShareButton url={window.location.href}>
             <TwitterIcon size={32} />
           </TwitterShareButton>
 
-          <WhatsappShareButton
-            about="kennedy is a boy"
-            content="kennedy is a boy"
-            url="/"
-          >
+          <WhatsappShareButton url={window.location.href}>
             <FaWhatsapp size={32} />
           </WhatsappShareButton>
         </div>
