@@ -4,13 +4,13 @@ import getLoggedUser from '@/app/utils/getLoggedUser';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Login or Sign Up – Tech-Freak',
+  title: 'Login or Sign Up – ByteCart',
   description:
-    'Access your Tech-Freak account or create a new one to start shopping for the latest tech products.',
+    'Access your ByteCart account or create a new one to start shopping for the latest tech products.',
   keywords: [
     'login',
     'sign up',
-    'Tech-Freak account',
+    'ByteCart account',
     'user login',
     'register',
     'create account',

@@ -7,12 +7,12 @@ import { Metadata } from 'next';
 import { pageProps } from '../utils/interfaces';
 
 export const metadata: Metadata = {
-  title: 'Account Activation – Tech-Freak',
+  title: 'Account Activation – ByteCart',
   description:
-    'Activate your Tech-Freak account to start shopping for the latest tech products. If you encounter any issues, please contact support.',
+    'Activate your ByteCart account to start shopping for the latest tech products. If you encounter any issues, please contact support.',
   keywords: [
     'account activation',
-    'Tech-Freak account',
+    'ByteCart account',
     'email confirmation',
     'activate account',
     'tech store signup',

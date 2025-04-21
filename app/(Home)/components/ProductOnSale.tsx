@@ -60,7 +60,7 @@ function SaleImage({
         src={src}
         width={size}
         height={size}
-        alt="ken"
+        alt={model}
         className={cn(
           `absolute top-2/4 left-2/4 -translate-x-[70%] -translate-y-2/4 scale-125`,
           className

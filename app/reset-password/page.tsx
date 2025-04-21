@@ -15,13 +15,13 @@ export async function generateMetadata({ searchParams }: Props) {
   );
 
   return {
-    title: !response ? 'something went wrong' : 'Reset Password – Tech-Freak',
+    title: !response ? 'something went wrong' : 'Reset Password – ByteCart',
     description: !response
       ? 'something went wrong'
-      : 'Enter a new password to regain access to your Tech-Freak account. Make sure to choose something secure and easy to remember.',
+      : 'Enter a new password to regain access to your ByteCart account. Make sure to choose something secure and easy to remember.',
     keywords: [
       'reset password',
-      'Tech-Freak password change',
+      'ByteCart password change',
       'update password',
       'account security',
       'new password',

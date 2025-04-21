@@ -2,13 +2,13 @@ import { Metadata } from 'next';
 import UpdatePassword from '../components/UpdatePassword';
 
 export const metadata: Metadata = {
-  title: 'Update Password – Tech-Freak',
+  title: 'Update Password – ByteCart',
   description:
-    'Change your account password to keep your Tech-Freak profile secure. Use a strong password you haven’t used before.',
+    'Change your account password to keep your ByteCart profile secure. Use a strong password you haven’t used before.',
   keywords: [
     'update password',
     'change password',
-    'Tech-Freak password',
+    'ByteCart password',
     'account security',
     'user settings',
     'secure password',

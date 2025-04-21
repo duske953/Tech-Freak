@@ -24,7 +24,7 @@ export default async function Navbar() {
     <header className="sticky z-10 top-0 bottom-0 bg-gray-50">
       <nav className="flex justify-between px-4 py-8 max-lg:py-4 max-lg:justify-center">
         <Link className="text-3xl text-blue-700 uppercase font-bold" href="/">
-          Tech-Freak
+          ByteCart
         </Link>
         <SecondaryNav />
         <ul className="flex gap-24 items-center max-lg:justify-around max-lg:hidden">

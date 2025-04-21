@@ -9,9 +9,9 @@ import ProductsList from '../components/ProductsList';
 import ErrorPage from '../components/ErrorPage';
 
 export const metadata: Metadata = {
-  title: 'Home – Tech-Freak',
+  title: 'Home – ByteCart',
   description:
-    'Explore top tech products including phones, laptops, and accessories. Shop online at Tech-Freak and discover what fits your needs.',
+    'Explore top tech products including phones, laptops, and accessories. Shop online at ByteCart and discover what fits your needs.',
   keywords: [
     'tech store',
     'electronics',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     'computer accessories',
     'latest tech',
     'buy electronics',
-    'Tech-Freak',
+    'ByteCart',
     'shop tech online',
   ],
 };

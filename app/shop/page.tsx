@@ -8,7 +8,7 @@ import { pageProps } from '../utils/interfaces';
 import ErrorPage from '../components/ErrorPage';
 
 export const metadata: Metadata = {
-  title: 'Shop – Tech-Freak',
+  title: 'Shop – ByteCart',
   description:
     'Explore a wide range of tech products including laptops, phones, and accessories. Quality tech at honest prices.',
   keywords: [

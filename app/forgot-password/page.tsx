@@ -2,17 +2,17 @@ import { Metadata } from 'next';
 import ForgotPassword from './components/ForgotPassword';
 
 export const metadata: Metadata = {
-  title: 'Forgot Password – Tech-Freak',
+  title: 'Forgot Password – ByteCart',
   description:
-    'Forgot your password? Reset it easily and regain access to your Tech-Freak account. Just enter your email and we’ll send you a reset link.',
+    'Forgot your password? Reset it easily and regain access to your ByteCart account. Just enter your email and we’ll send you a reset link.',
   keywords: [
     'forgot password',
     'reset password',
-    'Tech-Freak password recovery',
+    'ByteCart password recovery',
     'account recovery',
     'password reset',
     'email reset link',
-    'Tech-Freak login',
+    'ByteCart login',
     'account access',
     'secure password reset',
     'user account recovery',

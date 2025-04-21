@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="">
       <div className="grid grid-cols-4 gap-4 bg-gray-100 py-14 px-6 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-x-10 max-md:gap-y-20 max-sm:grid-cols-1">
         <div>
-          <p className="text-lg mb-3 font-bold">Tech-Freak</p>
+          <p className="text-lg mb-3 font-bold">ByteCart</p>
           <span>Shop interesting tech products</span>
 
           <div className="flex gap-8 mt-7 text-2xl text-blue-800">

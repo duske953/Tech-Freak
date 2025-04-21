@@ -30,13 +30,13 @@ export async function generateMetadata() {
   }
 
   return {
-    title: genereateMetaMsg(`Checkout – Tech-Freak (Total: $${totalPrice}`),
+    title: genereateMetaMsg(`Checkout – ByteCart (Total: $${totalPrice}`),
     description: genereateMetaMsg(
-      `You're just a step away from completing your purchase. Review your order and proceed to payment for your Tech-Freak shopping cart totaling $${totalPrice}.`
+      `You're just a step away from completing your purchase. Review your order and proceed to payment for your ByteCart shopping cart totaling $${totalPrice}.`
     ),
     keywords: [
       'checkout',
-      'Tech-Freak checkout',
+      'ByteCart checkout',
       'complete purchase',
       'shopping cart',
       'online payment',

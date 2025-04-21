@@ -24,10 +24,10 @@ export async function generateMetadata({
     title: err ? 'Something went wrong' : productTitle,
     description: err
       ? 'Something went wrong'
-      : `Discover the details of the ${productTitle} at Tech-Freak. Explore its features, specifications, and pricing. Get yours today!`,
+      : `Discover the details of the ${productTitle} at ByteCart. Explore its features, specifications, and pricing. Get yours today!`,
     keywords: [
       'product details',
-      'Tech-Freak product',
+      'ByteCart product',
       'buy tech products',
       'latest gadgets',
       'tech products',
@@ -35,7 +35,7 @@ export async function generateMetadata({
       'product features',
       'product specifications',
       'shop online',
-      'Tech-Freak store',
+      'ByteCart store',
       'product review',
       'buy now',
     ],

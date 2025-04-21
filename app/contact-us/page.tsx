@@ -6,12 +6,12 @@ import { cn } from '../lib/utils';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Us – Tech-Freak',
+  title: 'Contact Us – ByteCart',
   description:
     'Have questions or need support? Reach out to us through our contact page. We’re here to assist you with any inquiries or issues.',
   keywords: [
     'contact us',
-    'Tech-Freak support',
+    'ByteCart support',
     'customer support',
     'contact page',
     'tech store help',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     'customer service',
     'tech support',
     'get in touch',
-    'contact Tech-Freak',
+    'contact ByteCart',
     'support team',
     'feedback',
     'ask questions',
@@ -77,7 +77,7 @@ export default function Page() {
             className="max-lg:col-[-3_/_-1] max-sm:col-auto"
             tag="Email us"
             detail="For inquiries, feedback, or support, feel free to send us an email. We usually reply within 24 hours."
-            address="support@techfreak.com"
+            address="support@bytecart.com"
           >
             <MdEmail />
           </ContactList>

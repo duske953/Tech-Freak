@@ -3,13 +3,13 @@ import TerminateAccount from '../components/TerminateAccount';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Delete Account – Tech-Freak',
+  title: 'Delete Account – ByteCart',
   description:
-    'Permanently delete your Tech-Freak account and all associated data. This action cannot be undone.',
+    'Permanently delete your ByteCart account and all associated data. This action cannot be undone.',
   keywords: [
     'delete account',
     'terminate account',
-    'Tech-Freak account removal',
+    'ByteCart account removal',
     'close account',
     'remove user data',
     'account deletion',

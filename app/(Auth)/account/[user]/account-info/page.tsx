@@ -3,15 +3,15 @@ import UpdateAccountInfo from '../components/UpdateAccountInfo';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Update Profile – Tech-Freak',
+  title: 'Update Profile – ByteCart',
   description:
-    'Change your account name or email address to keep your Tech-Freak profile up to date.',
+    'Change your account name or email address to keep your ByteCart profile up to date.',
   keywords: [
     'update profile',
     'edit account details',
     'change email',
     'change name',
-    'Tech-Freak user settings',
+    'ByteCart user settings',
     'account settings',
     'update user info',
     'edit user profile',

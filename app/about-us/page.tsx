@@ -6,18 +6,18 @@ import { cn } from '../lib/utils';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Us – Tech-Freak',
+  title: 'About Us – ByteCart',
   description:
-    'Learn about Tech-Freak, our mission, and the team behind the tech store. We’re here to make quality tech accessible to everyone.',
+    'Learn about ByteCart, our mission, and the team behind the tech store. We’re here to make quality tech accessible to everyone.',
   keywords: [
-    'about Tech-Freak',
-    'Tech-Freak team',
+    'about ByteCart',
+    'ByteCart team',
     'tech mission',
     'our story',
     'tech company',
     'about us',
     'tech values',
-    'why Tech-Freak',
+    'why ByteCart',
     'tech for everyone',
     'meet the team',
     'company background',
@@ -81,7 +81,7 @@ function AboutInfo() {
         <Image
           className="w-full h-[30rem] object-cover rounded-md max-sm:h-auto"
           src="/about-us/tech-team.jpg"
-          alt="Meeting of team members @tech-freak"
+          alt="Meeting of team members @ByteCart"
           width={1000}
           height={1000}
         />
