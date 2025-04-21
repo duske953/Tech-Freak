@@ -21,26 +21,32 @@ export default function Footer() {
           <p className="mb-3 font-bold">Shop</p>
           <ul className="flex flex-col gap-4">
             <li>
-              <Link href="/">Laptops</Link>
+              <Link href="/shop?category=laptops&id=16225007012&page=1">
+                Laptops
+              </Link>
             </li>
             <li>
-              <Link href="/">Smartphones</Link>
-            </li>
-
-            <li>
-              <Link href="/">Headphones</Link>
-            </li>
-
-            <li>
-              <Link href="/">Accessories</Link>
+              <Link href="/shop?category=cell-phones&id=16225007016&page=1">
+                Smartphones
+              </Link>
             </li>
 
             <li>
-              <Link href="/">Camera</Link>
+              <Link href="/shop?category=headphones&id=16225007015&page=1">
+                Headphones
+              </Link>
             </li>
 
             <li>
-              <Link href="/">Computer</Link>
+              <Link href="/shop?category=cameras&id=16225007017&page=1">
+                Camera
+              </Link>
+            </li>
+
+            <li>
+              <Link href="/shop?category=monitors&id=16225007011&page=1">
+                Monitor
+              </Link>
             </li>
           </ul>
         </div>
@@ -88,6 +94,8 @@ export default function Footer() {
       <p className="text-center py-8">
         Created with love by{' '}
         <Link
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-blue-800 font-bold"
           href="https://eloho.vercel.app"
         >
