@@ -109,7 +109,7 @@ export default function Cart({
               href="/checkout"
               className={buttonVariants({ variant: 'secondary' })}
             >
-              <MdOutlineShoppingCartCheckout /> Procedd to Checkout
+              <MdOutlineShoppingCartCheckout /> Proceed to Checkout
             </Link>
           </SheetFooter>
         )}
