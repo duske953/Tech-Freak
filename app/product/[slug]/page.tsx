@@ -47,7 +47,7 @@ export default async function Page({ searchParams }: pageProps) {
   if (!id) return <ErrorPage />;
   const [response, err] = await tryCatchGet(`products/fetchProduct/${id}`, 600);
 
-  if (err) return <ErrorPage />;
+  if (err) return <div>{err}</div>;
 
   const productData = response.data.product as productTypes;
   return (
