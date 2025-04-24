@@ -45,7 +45,7 @@ export async function generateMetadata({
 export default async function Page({ searchParams }: pageProps) {
   const { id } = await searchParams;
   if (!id) return <ErrorPage />;
-  const [response, err] = await tryCatchGet(`products/fetchProduct/${id}`, 600);
+  const [response, err] = await tryCatchGet(`products/fetchProduct/${id}`, 0);
 
   if (err) return <div>{err}</div>;
 
