@@ -97,7 +97,7 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-800 font-bold"
-          href="https://eloho.vercel.app"
+          href="https://eloho.dev"
         >
           Eloho Kennedy
         </Link>
